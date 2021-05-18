@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <main>
+            <h2>Add book</h2>
+            <form action="#"
+                  th:action="@{/edit/{id}(id=${book.id})}"
+                  th:object="${book}"
+                  method="post">
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" th:field="*{title}" id="title" placeholder="title">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                        Title is required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Author</label>
+                    <input type="text" class="form-control" th:field="*{author}" id="author" placeholder="author">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">
+                        Author is required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Summary</label>
+                    <textarea class="form-control" th:field="*{summary}" id="summary" placeholder="summary"></textarea>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}">
+                        summary is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="Update book" class="btn btn-primary btn-lg"/>
+                </div>
+
+            </form>
+        </main>
+    </div>
+</div>
+<script th:src="@{/webjars/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js} "/>
+</body>
+</html>
